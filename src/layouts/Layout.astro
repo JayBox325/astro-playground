@@ -1,6 +1,8 @@
 ---
 import { SEO } from "astro-seo";
-// import { Spa } from "astro-spa";
+import Footer from "../components/_Layout/Footer.astro";
+import { Spa } from "astro-spa";
+import '../styles/globals.scss'
 
 export interface Props {
 	title: string;
@@ -46,7 +48,8 @@ const { title } = Astro.props;
 			/>
 	</head>
 	<body>
-		<!-- <Spa /> -->
+		<Spa />
 		<slot />
+		<Footer />
 	</body>
 </html>
