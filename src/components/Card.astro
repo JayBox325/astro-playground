@@ -9,6 +9,7 @@ const { href, title, body } = Astro.props;
 ---
 
 <li class="bg-white rounded-md p-6 shadow border border-gray-200">
+	<button data-button>Click me for alert</button>
 	<a href={href}>
 		<h2 class="text-xl font-bold mb-2">
 			{title}
@@ -19,3 +20,11 @@ const { href, title, body } = Astro.props;
 		</p>
 	</a>
 </li>
+
+
+<script>
+	const buttons = document.querySelectorAll('[data-button]')
+	buttons.forEach((button) => {
+		button.addEventListener('click', () => alert('clicked button'));
+	});
+</script>
