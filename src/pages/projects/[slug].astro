@@ -1,14 +1,15 @@
 ---
-import { useSanityClient, groq } from "astro-sanity";
+import { useSanityClient } from "astro-sanity"
 
 export async function getStaticPaths() {
     // get all projects
-    const projects = await useSanityClient().fetch(`*[_type == "project"]`);
+    const projects = await useSanityClient().fetch(`*[_type == "project"]`)
 
+    // Loop over projects and find the one that matches this slug
     return projects.map((project) => {
         return {
             params: {
-                slug: project.slug?.current || "",
+                slug: project?.slug?.current,
             },
             props: project,
         };
@@ -26,3 +27,6 @@ const {
 ---
 
 <h1>{title}</h1>
+<p>
+    <a href={`/projects`}>Back to all projects</a>
+</p>

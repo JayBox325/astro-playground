@@ -1,16 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Accordions from '../components/Accordions/Accordions.astro';
-import { getFirstBlogPost } from '../sanity/api';
-
-const data = await getFirstBlogPost();
 ---
 
 <Layout title="Project">
 	<main>
 		<h1>Project</h1>
-		
-		{data.title}
 
 		<a href="/">home</a>
 

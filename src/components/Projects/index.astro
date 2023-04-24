@@ -1,0 +1,23 @@
+---
+import ProjectItem from '../ProjectItem/index.astro'
+
+const { projects } = Astro.props
+---
+
+<div class="px-6 bg-black py-10 md:p-8 lg:p-10 xl:p-14 2xl:p-16">
+
+    {/* <div className="flex sm:justify-end mb-6">
+        <OrderToggle
+            order={order}
+            setOrder={setOrder}
+        />
+    </div> */}
+
+    <ul class="flex flex-col border-y border-gray-500 divide-y divide-gray-500">
+        {projects.map((project, n) => (
+            <ProjectItem
+                project={project}
+            />
+        ))}
+    </ul>
+</div>

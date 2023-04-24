@@ -1,0 +1,45 @@
+---
+import { Icon } from 'astro-icon'
+const {project} = Astro.props
+
+const {
+    title,
+    url,
+    partner,
+    tags,
+    completed
+} = project
+---
+
+<li class="flex-auto">
+    <div class="flex py-6 md:py-10 lg:py-8 relative group text-white flex-col justify-center w-full h-full xl:hover:pb-12 transition-all">
+        <a href={url} target="_blank" rel="noopener noreferrer" class="transition-colors absolute top-0 left-0 w-full h-full z-10" aria-label={`Visit ${title}`} />
+
+        <div class="grid grid-cols-6 md:grid-cols-12 gap-y-4 md:gapy-y-4">
+
+            <div class="col-span-6 md:col-span-9 xl:col-span-10">
+                <div class={`text-xs tracking-wide mb-1 lg:mb-2 sm:text-sm xl:text-base text-gray-300 font-light`}>
+                    <span class="">{new Date(completed).getFullYear()}</span>
+                    {partner && (
+                        <span><span class="inline-block px-2 lg:px-4">•</span>Delivered with <a class="p-2 -mt-2 -ml-2 relative z-20  inline-block cursor-pointer pointer-events-auto transition-colors underline underline-offset-4 hover:text-orange-500" href={partner.url} target="_blank" rel="noopener noreferrer">
+                            {partner.shortName ? (
+                                <span class="inline md:hidden">{partner.shortName}</span>
+                            ) : ''}
+                            <span class={`${partner.shortName ? 'hidden md:inline' : ''}`}>{partner.name}</span>
+                        </a></span>
+                    )}
+                </div>
+                <h2 class="relative transition-colors tracking-wide decoration-1 underline-offset-8 inline-block box-decoration-clone whitespace-pre-wrap font-body pointer-events-none z-20 leading-none text-[8vw] md:text-[7vw] lg:text-[4vw] font-light group-hover:text-orange-500">{title}&nbsp;<span class="w-7 h-7 lg:w-10 lg:h-10 text-black relative">.<!--<Icon name="mdi:arrow-right" class="w-7 h-7 lg:w-10 lg:h-10 inline opacity-0 transition-all text-white -translate-x-6 group-hover:opacity-100 group-hover:-translate-x-4 -translate-y-1/2 absolute top-1/2"/>--></span></h2>
+            </div>
+
+            <div class="col-span-6 md:col-span-3 xl:col-span-2">
+                <ul class="font-light tracking-wide text-gray-300 relative z-20 leading-none text-xs transition-colors pointer-events-none sm:text-sm flex flex-wrap flex-row gap-x-3 gap-y-2 md:pb-1 md:flex-col md:items-end md:justify-end h-full">
+                    {tags.map((tag, n) => (
+                        <li class="inline-block">{tag.title}</li>
+                    ))}
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</li>

@@ -76,7 +76,6 @@ const { title, items } = Astro.props
 
         if (targetItem) {
             event.preventDefault()
-            console.log('item', targetItem)
             targetItem.querySelector('[data-accordion-btn   ]').focus()
         }
 
@@ -93,7 +92,6 @@ const { title, items } = Astro.props
         const type = btn.getAttribute('data-toggle-all')
         const accordionWrapper = btn.closest('[data-accordion-container]')
         const accordionItems = [...accordionWrapper.querySelectorAll('[data-accordion-item]')]
-        console.log('type', type, accordionItems)
 
         if (type == 'close') {
             accordionItems.forEach((item, index) => {

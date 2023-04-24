@@ -19,6 +19,6 @@ export default defineConfig({
     useCdn: true
   })],
   // Vercel
-  output: "static",
-  adapter: vercel()
+  // output: "static",
+  // adapter: vercel()
 });
