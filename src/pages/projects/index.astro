@@ -1,0 +1,19 @@
+---
+import { useSanityClient, groq } from 'astro-sanity';
+const projects = await useSanityClient().fetch(`*[_type == "project"]`)
+---
+
+<h1>All projects</h1>
+
+<ul>
+    {projects.map((project,n) => {
+        // console.log(project)
+        if (!project.slug) return null
+
+        return (
+            <li>
+                <a href={`/projects/${project.slug.current}`}>{project.title}</a>
+            </li>
+        )
+    })}
+</ul>

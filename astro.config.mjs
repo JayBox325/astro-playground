@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import compress from "astro-compress";
-import vercel from '@astrojs/vercel/serverless';
+// import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel/static';
 import sanity from 'astro-sanity';
 
 
@@ -18,6 +19,6 @@ export default defineConfig({
     useCdn: true
   })],
   // Vercel
-  output: "server",
+  output: "static",
   adapter: vercel()
 });
